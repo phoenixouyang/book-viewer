@@ -19,8 +19,30 @@ export default function Books() {
   const [page, setPage] = useState(1);
   const [pageData, setPageData] = useState([]);
   const router = useRouter();
-  const author = "Robin Hobb";
-  const { data, error } = useSWR(`https://openlibrary.org/search.json?q=author:${encodeURIComponent(author)}&page=${page}&limit=10`);
+
+  const subtext = (
+    <>
+        {Object.entries(router.query).map(([key, value], index) => (
+            <span key={index}>
+                {index > 0 && " | "}
+                <strong>{key.charAt(0).toUpperCase() + key.slice(1)}</strong>: {value}
+            </span>
+        ))}
+    </>
+  );
+
+  let queryString = { ...router.query };
+  let qParts = [];
+  
+  Object.entries(queryString).forEach(([key, value]) => {
+    qParts.push(`${key}:${value}`);
+  });
+  
+  if (qParts.length > 0) {
+    queryString = qParts.join(' AND ');
+  }
+
+  const { data, error } = useSWR(`https://openlibrary.org/search.json?q=${queryString}&page=${page}&limit=10`);
 
   useEffect(() => {
     if (data) {
@@ -39,7 +61,7 @@ export default function Books() {
   };
 
   return (<>
-    <PageHeader text={`Novels by ${author}`} />
+    <PageHeader text="Search Results" subtext={subtext} />
     <Table striped hover>
       <thead>
         <tr>
