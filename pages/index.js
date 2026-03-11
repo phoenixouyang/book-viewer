@@ -1,3 +1,13 @@
+/********************************************************************************* * WEB422 – Assignment 1
+* * I declare that this assignment is my own work in accordance with Seneca's
+* Academic Integrity Policy:
+*
+* https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html 
+* 
+* Name: Phoenix Ouyang     Student ID: 135264240      Date: February 5, 2026 
+* 
+********************************************************************************/
+
 import PageHeader from "@/components/PageHeader";
 import { Pagination, Table } from "react-bootstrap";
 import { useRouter } from 'next/router';

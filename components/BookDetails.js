@@ -20,22 +20,41 @@ export default function BookDetails({book}) {
                 </Col>
                 <Col lg="8">
                         <h3>{book.title}</h3>
-                        <small>Date Published: {book.first_publish_date}</small>
+                        {book.first_publish_date && (
+                            <>
+                                <small>Date Published: {book.first_publish_date}</small>
+                            </>
+                        )}
                         <p>{typeof book.description === "string" ? book.description : book.description?.value}</p>
                         <br />
 
+                {book.subjects && (
+                    <>
                         <h5>Themes</h5>
-                        {book.subjects.join(", ")};
+                        {book.subjects.join(", ")}
                         <br /><br />
+                    </>
+                )}
 
+                {book.subject_places && (
+                    <>
                         <h5>Settings</h5>
-                        The Realm of the Elderlings
+                        {book.subject_places.join(", ")}
                         <br /><br />
+                    </>
+                )}
 
+                {book.links && (
+                    <>
                         <h5>More Information</h5>
-                        <span><a href="https://en.wikipedia.org/wiki/Farseer_trilogy" target="_blank">Wikipedia (Farseer trilogy)</a><br /></span>
-                        <span><a href="https://www.goodreads.com/book/show/77197.Assassin_s_Apprentice" target="_blank">Goodreads</a><br /></span>
-                
+                        {book.links.map((link, index) => (
+                            <span key={index}>
+                                <a href={link.url} target="_blank" rel="noreferrer">{link.title}</a>
+                                <br />
+                            </span>
+                        ))}
+                    </>
+                )}
                 </Col>
             </Row>
         </Container>
