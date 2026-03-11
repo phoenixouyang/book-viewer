@@ -18,7 +18,7 @@ export default function WorkId() {
     } else {
         return (<>
             <PageHeader text={data.title}/>
-            <BookDetails book={data} />
+            <BookDetails book={data} workId={workId} />
         </>)
     }
 }

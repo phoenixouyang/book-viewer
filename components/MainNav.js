@@ -8,6 +8,7 @@ export default function MainNav() {
                 <Navbar.Brand><Nav.Link class="nav-link" as={Link} href="/">Phoenix Ouyang</Nav.Link></Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link class="nav-link" as={Link} href="/about">About</Nav.Link>
+                    <Nav.Link class="nav-link" as={Link} href="/favourites">Favourites</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
