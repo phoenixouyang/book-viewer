@@ -1,4 +1,5 @@
-/********************************************************************************* * WEB422 – Assignment 3
+/********************************************************************************* 
+ * WEB422 – Assignment 3
 * * I declare that this assignment is my own work in accordance with Seneca's
 * Academic Integrity Policy:
 *
@@ -6,7 +7,8 @@
 *
 * Name: Phoenix Ouyang  Student ID: 135264240    Date: April 10, 2026
 *
-********************************************************************************/
+* Vercel App (Deployed) Link: ____________________________________________________
+**********************************************************************************/
 
 import PageHeader from "@/components/PageHeader";
 import { useRouter } from "next/router";
