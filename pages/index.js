@@ -1,12 +1,10 @@
-/********************************************************************************
-* WEB422 – Assignment 02
-*
-* I declare that this assignment is my own work in accordance with Seneca's
+/********************************************************************************* * WEB422 – Assignment 3
+* * I declare that this assignment is my own work in accordance with Seneca's
 * Academic Integrity Policy:
 *
 * https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html
 *
-* Name: Phoenix Ouyang  Student ID: 135264240    Date: March 10, 2026
+* Name: Phoenix Ouyang  Student ID: 135264240    Date: April 10, 2026
 *
 ********************************************************************************/
 
