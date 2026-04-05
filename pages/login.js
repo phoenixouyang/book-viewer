@@ -2,23 +2,31 @@ import { Card, Form, Alert, Button } from "react-bootstrap";
 import { useState, useEffect } from 'react';
 import { authenticateUser } from "@/lib/authenticate.js";
 import { useRouter } from 'next/router';
+import { favouritesAtom } from "@/store";
+import { useAtom } from "jotai";
+import { getFavourites } from "@/lib/userData";
 
 export default function Login(props) {
+    const [warning, setWarning] = useState("");
+    const [user, setUser] = useState("");
+    const [password, setPassword] = useState("");
+    const router = useRouter();
+    const [favourites, setFavouritesList] = useAtom(favouritesAtom)
 
-  const [warning, setWarning] = useState("");
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
-  const router = useRouter();
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    try{
-        await authenticateUser(user, password);
-      router.push("/");
-    } catch (err) {
-        setWarning(err.message);
+    async function updateAtom(){
+        setFavouritesList(await getFavourites());
     }
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        try{
+            await authenticateUser(user, password);
+            await updateAtom();
+            router.push("/");
+        } catch (err) {
+            setWarning(err.message);
+        }
 
   }
 
