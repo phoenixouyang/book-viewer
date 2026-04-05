@@ -5,7 +5,8 @@ import { useAtom } from "jotai";
 import { Container, Row, Col } from "react-bootstrap";
 
 export default function Favourites() {
-    const [favourites, setFavouritesList] = useAtom(favouritesAtom)
+    const [favourites, setFavouritesList] = useAtom(favouritesAtom);
+    if(!favourites) return null;
 
     return(<>
         <PageHeader text="Favourites" subtext="All your favourite books, in one place" />

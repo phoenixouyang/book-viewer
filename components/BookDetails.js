@@ -1,19 +1,24 @@
 import { favouritesAtom } from "@/store";
 import { useAtom } from "jotai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Container, Row, Button } from "react-bootstrap";
+import { addToFavourites, removeFromFavourites } from "@/lib/userData";
 
 export default function BookDetails({ book, workId, showFavouriteBtn = true }) {
     const [favourites, setFavouritesList] = useAtom(favouritesAtom);
-    const [showAdded, setShowAdded] = useState(favourites.includes(workId));
+    const [showAdded, setShowAdded] = useState(false);
     const imageIdx = book.title == "Assassin's Apprentice" ? 6 : 0; // hard code title index to show a different cover in about page
    
-    function favouritesClicked() {
+    useEffect(() => {
+        setShowAdded(favourites?.includes(workId))
+    }, [favourites])
+
+    async function favouritesClicked() {
         if (showAdded) {
-            setFavouritesList(current => current.filter(fav => fav != workId));
+            setFavouritesList(await removeFromFavourites(workId));
             setShowAdded(false);
         } else {
-            setFavouritesList(current => [...current, workId]);
+            setFavouritesList(await addToFavourites(workId));
             setShowAdded(true);
         }
     }
